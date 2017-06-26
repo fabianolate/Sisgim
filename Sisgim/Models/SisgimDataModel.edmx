@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SISGIMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="INSTRUMENTOMUSICAL">
+          <Key>
+            <PropertyRef Name="CODIGO" />
+          </Key>
+          <Property Name="CODIGO" Type="int" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="500" />
+          <Property Name="UBICACION" Type="varchar" MaxLength="100" />
+          <Property Name="NOMBREPROFESOR" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="PRESTAMO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FECHAHORAPRESTAMO" Type="datetime" Nullable="false" />
+          <Property Name="FECHAHORADEVOLUCION" Type="datetime" />
+          <Property Name="NOMBREALUMNO" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CURSOALUMNO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NOMBREPROFESOR" Type="nvarchar" MaxLength="256" />
+          <Property Name="CODIGOINSTRUMENTO" Type="int" />
+        </EntityType>
+        <Association Name="FK__PRESTAMO__CODIGO__1273C1CD">
+          <End Role="INSTRUMENTOMUSICAL" Type="Self.INSTRUMENTOMUSICAL" Multiplicity="0..1" />
+          <End Role="PRESTAMO" Type="Self.PRESTAMO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUMENTOMUSICAL">
+              <PropertyRef Name="CODIGO" />
+            </Principal>
+            <Dependent Role="PRESTAMO">
+              <PropertyRef Name="CODIGOINSTRUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SISGIMModelStoreContainer">
+          <EntitySet Name="INSTRUMENTOMUSICAL" EntityType="Self.INSTRUMENTOMUSICAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRESTAMO" EntityType="Self.PRESTAMO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__PRESTAMO__CODIGO__1273C1CD" Association="Self.FK__PRESTAMO__CODIGO__1273C1CD">
+            <End Role="INSTRUMENTOMUSICAL" EntitySet="INSTRUMENTOMUSICAL" />
+            <End Role="PRESTAMO" EntitySet="PRESTAMO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SISGIMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="INSTRUMENTOMUSICAL">
+          <Key>
+            <PropertyRef Name="CODIGO" />
+          </Key>
+          <Property Name="CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UBICACION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBREPROFESOR" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PRESTAMO" Relationship="Self.FK__PRESTAMO__CODIGO__1273C1CD" FromRole="INSTRUMENTOMUSICAL" ToRole="PRESTAMO" />
+        </EntityType>
+        <EntityType Name="PRESTAMO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FECHAHORAPRESTAMO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FECHAHORADEVOLUCION" Type="DateTime" Precision="3" />
+          <Property Name="NOMBREALUMNO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CURSOALUMNO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBREPROFESOR" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CODIGOINSTRUMENTO" Type="Int32" />
+          <NavigationProperty Name="INSTRUMENTOMUSICAL" Relationship="Self.FK__PRESTAMO__CODIGO__1273C1CD" FromRole="PRESTAMO" ToRole="INSTRUMENTOMUSICAL" />
+        </EntityType>
+        <Association Name="FK__PRESTAMO__CODIGO__1273C1CD">
+          <End Role="INSTRUMENTOMUSICAL" Type="Self.INSTRUMENTOMUSICAL" Multiplicity="0..1" />
+          <End Role="PRESTAMO" Type="Self.PRESTAMO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUMENTOMUSICAL">
+              <PropertyRef Name="CODIGO" />
+            </Principal>
+            <Dependent Role="PRESTAMO">
+              <PropertyRef Name="CODIGOINSTRUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SISGIMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="INSTRUMENTOMUSICAL" EntityType="Self.INSTRUMENTOMUSICAL" />
+          <EntitySet Name="PRESTAMO" EntityType="Self.PRESTAMO" />
+          <AssociationSet Name="FK__PRESTAMO__CODIGO__1273C1CD" Association="Self.FK__PRESTAMO__CODIGO__1273C1CD">
+            <End Role="INSTRUMENTOMUSICAL" EntitySet="INSTRUMENTOMUSICAL" />
+            <End Role="PRESTAMO" EntitySet="PRESTAMO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SISGIMModelStoreContainer" CdmEntityContainer="SISGIMEntities">
+          <EntitySetMapping Name="INSTRUMENTOMUSICAL">
+            <EntityTypeMapping TypeName="SISGIMModel.INSTRUMENTOMUSICAL">
+              <MappingFragment StoreEntitySet="INSTRUMENTOMUSICAL">
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="UBICACION" ColumnName="UBICACION" />
+                <ScalarProperty Name="NOMBREPROFESOR" ColumnName="NOMBREPROFESOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRESTAMO">
+            <EntityTypeMapping TypeName="SISGIMModel.PRESTAMO">
+              <MappingFragment StoreEntitySet="PRESTAMO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FECHAHORAPRESTAMO" ColumnName="FECHAHORAPRESTAMO" />
+                <ScalarProperty Name="FECHAHORADEVOLUCION" ColumnName="FECHAHORADEVOLUCION" />
+                <ScalarProperty Name="NOMBREALUMNO" ColumnName="NOMBREALUMNO" />
+                <ScalarProperty Name="CURSOALUMNO" ColumnName="CURSOALUMNO" />
+                <ScalarProperty Name="NOMBREPROFESOR" ColumnName="NOMBREPROFESOR" />
+                <ScalarProperty Name="CODIGOINSTRUMENTO" ColumnName="CODIGOINSTRUMENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

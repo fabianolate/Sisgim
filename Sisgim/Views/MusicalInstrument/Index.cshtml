@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Sisgim.Models.INSTRUMENTOMUSICAL>
+
+@{
+    ViewBag.Title = "Instrumentos";
+}
+
+<h2>Instrumentos</h2>
+
+<p>
+    @Html.ActionLink("Ingresar Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CODIGO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESCRIPCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UBICACION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBREPROFESOR)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CODIGO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESCRIPCION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UBICACION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBREPROFESOR)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CODIGO }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CODIGO })
+        </td>
+    </tr>
+}
+
+</table>
