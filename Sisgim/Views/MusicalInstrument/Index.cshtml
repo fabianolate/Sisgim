@@ -8,7 +8,17 @@
 
 <p>
     @Html.ActionLink("Ingresar Nuevo", "Create")
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.Label("Buscar por nombre: ", htmlAttributes: new { @class = "control-label" })
+        @Html.Editor("nombreInstrumento", new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessage("nombreInstrumento", "", new { @class = "text-danger" })
+        <br />
+        <input type="submit" value="Buscar" class="btn btn-default" />
+    }
 </p>
+<br />
 <table class="table">
     <tr>
         <th>
@@ -54,3 +64,6 @@
 }
 
 </table>
+<div class="form-actions no-color">
+    @Html.ActionLink("Volver a la lista", "Index")
+</div>

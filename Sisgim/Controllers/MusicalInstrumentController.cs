@@ -15,10 +15,14 @@ namespace Sisgim.Controllers
 
         [Authorize]
         // GET: MusicalInstrument
-        public ActionResult Index()
+        public ActionResult Index(String nombreInstrumento)
         {
-            var instrumentList = dbSisgim.INSTRUMENTOMUSICAL.ToList();
-            return View(instrumentList);
+            var instrumento = from s in dbSisgim.INSTRUMENTOMUSICAL select s;
+            if (!string.IsNullOrEmpty(nombreInstrumento))
+            {
+                instrumento = instrumento.Where(a => a.NOMBRE.Contains(nombreInstrumento));
+            }
+            return View(instrumento);
         }
 
         // GET: MusicalInstrument/Create
