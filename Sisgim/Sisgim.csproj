@@ -192,6 +192,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstrumentLoanController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MusicalInstrumentController.cs" />
     <Compile Include="Global.asax.cs">
@@ -303,6 +304,8 @@
     <Content Include="Views\MusicalInstrument\Create.cshtml" />
     <Content Include="Views\MusicalInstrument\Edit.cshtml" />
     <Content Include="Views\MusicalInstrument\Delete.cshtml" />
+    <Content Include="Views\InstrumentLoan\Index.cshtml" />
+    <Content Include="Views\InstrumentLoan\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

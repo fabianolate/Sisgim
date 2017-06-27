@@ -41,7 +41,7 @@ namespace Sisgim.Controllers
                 {
                     var a = instrument;
                     a.NOMBREPROFESOR = User.Identity.Name;
-                    dbSisgim.INSTRUMENTOMUSICAL.Add(instrument);
+                    dbSisgim.INSTRUMENTOMUSICAL.Add(a);
                     dbSisgim.SaveChanges();
                     dbSisgim.Dispose();
                     return RedirectToAction("Index");
