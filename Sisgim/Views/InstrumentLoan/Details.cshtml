@@ -1,0 +1,98 @@
+﻿@model Sisgim.Models.PRESTAMO
+
+@{
+    ViewBag.Title = "Detalles Préstamo";
+}
+
+<h2>Detalles Préstamo</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHAHORAPRESTAMO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHAHORAPRESTAMO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHAHORADEVOLUCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHAHORADEVOLUCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBREALUMNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBREALUMNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CURSOALUMNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CURSOALUMNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBREPROFESOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBREPROFESOR)
+        </dd>
+        <br />
+        <dt>
+           <u>Instrumento Musical</u>
+        </dt>
+        <br />
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.INSTRUMENTOMUSICAL.CODIGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INSTRUMENTOMUSICAL.CODIGO)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.INSTRUMENTOMUSICAL.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INSTRUMENTOMUSICAL.NOMBRE)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.INSTRUMENTOMUSICAL.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INSTRUMENTOMUSICAL.DESCRIPCION)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.INSTRUMENTOMUSICAL.UBICACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INSTRUMENTOMUSICAL.UBICACION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>

@@ -11,15 +11,29 @@ namespace Sisgim.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PRESTAMO
     {
+        [Display(Name = "Número Préstamo")]
         public int ID { get; set; }
+
+        [Display(Name = "Fecha/Hora Préstamo")]
         public System.DateTime FECHAHORAPRESTAMO { get; set; }
+
+        [Display(Name = "Fecha/Hora Devolución")]
         public Nullable<System.DateTime> FECHAHORADEVOLUCION { get; set; }
+
+        [Display(Name = "Nombre Alumno")]
         public string NOMBREALUMNO { get; set; }
+
+        [Display(Name = "Curso Alumno")]
         public string CURSOALUMNO { get; set; }
+
+        [Display(Name = "Profesor")]
         public string NOMBREPROFESOR { get; set; }
+
+        [Display(Name = "Código Instrumento")]
         public Nullable<int> CODIGOINSTRUMENTO { get; set; }
     
         public virtual INSTRUMENTOMUSICAL INSTRUMENTOMUSICAL { get; set; }

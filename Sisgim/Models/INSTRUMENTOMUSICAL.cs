@@ -24,7 +24,7 @@ namespace Sisgim.Models
         [Display(Name = "Código")]
         public int CODIGO { get; set; }
 
-        [Display(Name = "Nombre")]
+        [Display(Name = "Nombre Instrumento")]
         public string NOMBRE { get; set; }
 
         [Display(Name = "Descripción")]

@@ -1,0 +1,71 @@
+﻿@model Sisgim.Models.PRESTAMO
+
+@{
+    ViewBag.Title = "Eliminar Préstamo";
+}
+
+<h2>Eliminar Préstamo</h2>
+
+<h3>¿Está seguro que desea eliminar este préstamo?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHAHORAPRESTAMO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHAHORAPRESTAMO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHAHORADEVOLUCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHAHORADEVOLUCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBREALUMNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBREALUMNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CURSOALUMNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CURSOALUMNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBREPROFESOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBREPROFESOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.INSTRUMENTOMUSICAL.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INSTRUMENTOMUSICAL.NOMBRE)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </div>
+    }
+</div>

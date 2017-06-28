@@ -306,6 +306,10 @@
     <Content Include="Views\MusicalInstrument\Delete.cshtml" />
     <Content Include="Views\InstrumentLoan\Index.cshtml" />
     <Content Include="Views\InstrumentLoan\Create.cshtml" />
+    <Content Include="Views\InstrumentLoan\Edit.cshtml" />
+    <Content Include="Views\InstrumentLoan\Delete.cshtml" />
+    <Content Include="Views\InstrumentLoan\Details.cshtml" />
+    <Content Include="Views\InstrumentLoan\Return.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

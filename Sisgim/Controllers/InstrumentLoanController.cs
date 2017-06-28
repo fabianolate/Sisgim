@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
+using System.Data.Entity;
 
 namespace Sisgim.Controllers
 {
@@ -24,9 +26,20 @@ namespace Sisgim.Controllers
         }
 
         // GET: InstrumentLoan/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var loan = dbSisgim.PRESTAMO.Find(id);
+
+            if (loan == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(loan);
         }
 
         // GET: InstrumentLoan/Create
@@ -60,46 +73,125 @@ namespace Sisgim.Controllers
         }
 
         // GET: InstrumentLoan/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var loan = dbSisgim.PRESTAMO.Find(id);
+
+            if (loan == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(loan);
         }
 
         // POST: InstrumentLoan/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(PRESTAMO loan)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    var a = loan;
+                    a.FECHAHORAPRESTAMO = DateTime.Now;
+                    a.NOMBREPROFESOR = User.Identity.Name;
+                    dbSisgim.Entry(a).State = EntityState.Modified;
+                    dbSisgim.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(loan);
             }
             catch
             {
-                return View();
+                return View(loan);
             }
         }
 
         // GET: InstrumentLoan/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var loan = dbSisgim.PRESTAMO.Find(id);
+
+            if (loan == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(loan);
         }
 
         // POST: InstrumentLoan/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, PRESTAMO loan)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    loan = dbSisgim.PRESTAMO.Find(id);
+                    if (loan == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    dbSisgim.PRESTAMO.Remove(loan);
+                    dbSisgim.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(loan);
             }
             catch
             {
-                return View();
+                return View(loan);
+            }
+        }
+
+        // GET: InstrumentLoan/Return/5
+        public ActionResult Return(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var loan = dbSisgim.PRESTAMO.Find(id);
+
+            if (loan == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(loan);
+        }
+
+        // POST: InstrumentLoan/Return/5
+        [HttpPost]
+        public ActionResult Return(PRESTAMO loan)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var a = loan;
+                    a.FECHAHORAPRESTAMO = DateTime.Now;
+                    a.FECHAHORADEVOLUCION = DateTime.Now;
+                    a.NOMBREPROFESOR = User.Identity.Name;
+                    dbSisgim.Entry(a).State = EntityState.Modified;
+                    dbSisgim.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(loan);
+            }
+            catch
+            { 
+                return View(loan);
             }
         }
     }

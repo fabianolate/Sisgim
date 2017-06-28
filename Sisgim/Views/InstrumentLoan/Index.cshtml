@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Sisgim.Models.PRESTAMO>
 
 @{
-    ViewBag.Title = "Préstamo Instrumentos";
+    ViewBag.Title = "Préstamo de Instrumentos";
 }
 
-<h2>Préstamo Instrumentos</h2>
+<h2>Préstamo de Instrumentos</h2>
 
 <p>
     @Html.ActionLink("Ingresar préstamo", "Create")
@@ -21,10 +21,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FECHAHORAPRESTAMO)
+            @Html.DisplayNameFor(model => model.ID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FECHAHORADEVOLUCION)
+            @Html.DisplayNameFor(model => model.FECHAHORAPRESTAMO)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.NOMBREALUMNO)
@@ -38,16 +38,19 @@
         <th>
             @Html.DisplayNameFor(model => model.INSTRUMENTOMUSICAL.NOMBRE)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHAHORADEVOLUCION)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.FECHAHORAPRESTAMO)
+            @Html.DisplayFor(modelItem => item.ID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FECHAHORADEVOLUCION)
+            @Html.DisplayFor(modelItem => item.FECHAHORAPRESTAMO)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NOMBREALUMNO)
@@ -62,11 +65,19 @@
             @Html.DisplayFor(modelItem => item.INSTRUMENTOMUSICAL.NOMBRE)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.DisplayFor(modelItem => item.FECHAHORADEVOLUCION)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID }) |
+            @Html.ActionLink("Devolver", "Return", new { id = item.ID })
+            
         </td>
     </tr>
 }
 
 </table>
+<div class="form-actions no-color">
+    @Html.ActionLink("Volver a la lista", "Index")
+</div>
